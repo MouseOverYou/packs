@@ -1,26 +1,55 @@
 let woodMat, LeuchteMat
 let videoMats = []
 let coatMat;
+let daily_alphaSwoosh, coll_alphaSwoosh, hair_alphaSwoosh, omg1_alphaSwoosh, omg2_alphaSwoosh, red_alphaSwoosh 
 function ChangeMaterialProperties() {
 
-    var redBay = new BABYLON.Color3.FromHexString("#ea1e1e");
-    var blueBay = new BABYLON.Color3.FromHexString("#063c9d");
-    var lightGrayBay = new BABYLON.Color3.FromHexString("#eeeeee");
-    var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
-    var blackBay = new BABYLON.Color3.FromHexString("#000000");
-
-    var yellow = new BABYLON.Color3.FromHexString("#E19A00");
     var white = new BABYLON.Color3.FromHexString("#FFFFFF");
     var black = new BABYLON.Color3.FromHexString("#000000");
+
+    daily_alphaSwoosh = CreateVideoTexture("daily_alphaSwoosh",  "assets/videoTextures/daily swoosh bw.mp4")
+    coll_alphaSwoosh = CreateVideoTexture("coll_alphaSwoosh",  "assets/videoTextures/collagen bw.mp4")
+    hair_alphaSwoosh = CreateVideoTexture("hair_alphaSwoosh",  "assets/videoTextures/hair bw.mp4")
+    omg1_alphaSwoosh = CreateVideoTexture("omg1_alphaSwoosh",  "assets/videoTextures/omg pflanze 1 bw.mp4")
+    omg2_alphaSwoosh = CreateVideoTexture("omg2_alphaSwoosh",  "assets/videoTextures/omg pflanze 2 bw.mp4")
+    red_alphaSwoosh = CreateVideoTexture("red_alphaSwoosh",  "assets/videoTextures/red swoosh bw.mp4")
 
     let sceneMats = scene.materials;
     for (let mat of sceneMats) {
         if (mat.name == "hdrSkyBox" || mat.name == "BackgroundSkyboxMaterial" || mat.name =="BackgroundPlaneMaterial") {
             continue;
         }
-
         mat.reflectionTexture = hdrTextureCity;
-        if (mat.name == "Floor A") {
+        if(mat.name == "d_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture =daily_alphaSwoosh
+        }
+        else if(mat.name == "h_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture =hair_alphaSwoosh
+        }
+        else if(mat.name == "r_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture = red_alphaSwoosh
+        }
+        else if(mat.name == "o_swoosh1"){
+            mat.unlit = true
+            mat.opacityTexture = omg1_alphaSwoosh
+        }
+        else if(mat.name == "o_swoosh2"){
+            mat.unlit = true
+            mat.opacityTexture = omg2_alphaSwoosh
+        }
+        else if(mat.name == "c_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture = coll_alphaSwoosh
+        }
+
+        else if(mat.name.startsWith('_',1)){
+            mat.unlit = true
+        }
+
+        else if (mat.name == "Floor A") {
             mat.opacityTexture = mat.albedoTexture;
             mat.opacityTexture .getAlphaFromRGB = true
             mat.albedoTexture = ""
@@ -49,23 +78,19 @@ function ChangeMaterialProperties() {
             mat.roughness = 0.1
 
         }
-        else if(mat.name == "env_walls"){
-            scaleText(mat.albedoTexture, 100, 1, 1)
-            scaleText(mat.bumpTexture, 100, 1, 1)
-            mat.metallic = 0.1
-            mat.roughness = 0.5
-            mat.metallicF0Factor = 0
-            var wallsAO = new BABYLON.Texture("./assets/Walls2Ambient_Occlusion.png", scene, true, false)
-            mat.ambientTexture = wallsAO
-        }
-        else if(mat.name == "coll Mat"){
-            mat.alpha = 0
-            mat.transparencyMode = 2
-        }
 
     }
 
 
+}
+
+function CreateVideoTexture(name, url){
+    var vidText = new BABYLON.VideoTexture(name, url, scene, true, false);
+    vidText.vScale = -1
+    vidText.video.pause()
+    vidText.video.loop = false
+    vidText.getAlphaFromRGB =true
+    return vidText;
 }
 
 function UpdateEnvReflections(hdr){
@@ -94,6 +119,7 @@ function CreateCustomMaterials() {
     colMat.wireframe = true
     colMat.alpha = 0
 
+    /*
     var hsInfoText = new BABYLON.Texture("./assets/hotspot_info.png", scene, true, true)
     var hsText = new BABYLON.Texture("./assets/hotspot.png", scene, true, true)
     HotspotMat = new BABYLON.PBRMaterial("HotspotMat", scene)
@@ -105,6 +131,7 @@ function CreateCustomMaterials() {
     HotspotInfoMat.unlit = true
     HotspotInfoMat.albedoTexture = hsInfoText
     HotspotInfoMat.opacityTexture = hsInfoText
+    */
 
     
 }

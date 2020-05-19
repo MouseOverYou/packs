@@ -15,8 +15,9 @@ var createScene = function () {
     var scene = new BABYLON.Scene(engine);
 
     var assetsManager = new BABYLON.AssetsManager(scene)
+    CreateCustomMaterials()
     LoadAssets(scene, assetsManager)
-    camera = new BABYLON.ArcRotateCamera("Camera", 0 * (Math.PI / 180), 85 * (Math.PI / 180), 4, new BABYLON.Vector3(0, 0.5, 0), scene);
+    camera = new BABYLON.ArcRotateCamera("Camera", 0 * (Math.PI / 180), 90 * (Math.PI / 180), 7, new BABYLON.Vector3(0, 1.5, 0), scene);
     camera.minZ = 1
     camera.panningDistanceLimit = 0;
     camera.pinchToPanMaxDistance = 0;
@@ -79,19 +80,21 @@ var createScene = function () {
     var showUI = false
     scene.onPointerDown = function () {
 
-        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (mesh.name.startsWith("HS Collider") && mesh.isPickable); });
+        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (mesh.name.startsWith("PackCollider") && mesh.isPickable); });
         if (pickInfo && pickInfo.pickedMesh) {
 
             //alert(pickInfo.pickedMesh.name);
-            CurrentSelection = pickInfo.pickedMesh.name.split('HS Collider ')[1];
-            //alert(CurrentSelection)
+            CurrentSelection = pickInfo.pickedMesh.name.split('PackCollider')[1];
+            ChangeFocusPack(CurrentSelection)
+            ShowSelectedAnim(CurrentSelection)
+            //ShowSelectedAnim(CurrentSelection)
             switch (CurrentSelection) {
                 case "0":
-                    showUI = !showUI
+                    //console.log(CurrentSelection)
                     break;
 
                 case "1":
-                    ManageWorlds("turbine");
+                    //ManageWorlds("turbine");
                     break;
 
                 case "2":
@@ -103,25 +106,17 @@ var createScene = function () {
                     break;
 
                 case "4":
-                    ManageWorlds("plane");
+                    //ManageWorlds("plane");
                     break;
 
                 case "5":
                     showUI = !showUI
                     break;
+                case "5":
+                    showUI = !showUI
+                    break;
             }
 
-            if (showUI) {
-                //$('#InfoUI').css('display', "block")
-                document.getElementById("infobox-video").style.opacity = "1"
-                document.getElementById("infobox-video").style.right = "60px"
-            }
-            else {
-                document.getElementById("infobox-video").style.opacity = "0"
-                document.getElementById("infobox-video").style.right = "-400px"
-            }
-
-            //console.log(CurrentSelection)
         }
     }
     return scene;

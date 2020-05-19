@@ -2,6 +2,7 @@ var Hum_P
 var hdrTextureCity, hdrSkyboxMaterial, hdrSkybox,  CityEnvTask
 let PacksList = [] 
 let AnimsList = []
+let PackColls = []
 
 function LoadAssets(scene, assetsManager) {
 
@@ -50,13 +51,25 @@ function LoadAssets(scene, assetsManager) {
        // console.log(task.loadedMeshes[0]._children[0])
         task.loadedMeshes[0]._children[1].getChildTransformNodes(true).forEach(elem => {
             AnimsList.push(elem);
+            elem.setEnabled(false)
         });
+
+        let j =0
         task.loadedMeshes[0]._children[0].getChildTransformNodes(true).forEach(elem => {
             elem.rotationQuaternion = null;
             PacksList.push(elem);
+            //colliders
+            var packColl = new BABYLON.MeshBuilder.CreateBox("PackCollider" + j.toString(), { height: 1.4, width:0.6, depth: 0.7 }, scene)
+            packColl.material = colMat
+            packColl.setParent(elem);
+            packColl.position = new BABYLON.Vector3(0,0.7,0);
+            packColl.isPickable = true;
+            PackColls.push(packColl)
+            j++
         });
-        //hide anims
-        task.loadedMeshes[0]._children[1].setEnabled(false)
+        //move anims
+        task.loadedMeshes[0]._children[1].position.z = 1.5
+        task.loadedMeshes[0]._children[1].scaling = new BABYLON.Vector3(1.5, 1.5, 1.5)
     }
 
     HumLoaderTask.onError = function (task, message, exception) {
