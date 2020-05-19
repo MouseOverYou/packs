@@ -1,0 +1,77 @@
+html,
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+  position: absolute;
+  top: 92vh;
+  left: 5vh;
+  z-index: 998;
+  max-width: 200px;
+  height: auto;
+  pointer-events: none
+}
+
+#fpsLabel {
+  position: absolute;
+  top: 25px;
+  z-index: 3;
+  background: blanchedalmond
+}
+
+#debugLabel {
+  position: absolute;
+  top: 5px;
+  z-index: -1;
+  background: blanchedalmond
+}
+
+
+/*BABYLON CSS*/
+#renderCanvas {
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    /*  */
+}
+
+/* UI*/
+/*Colour Picker*/
+#InfoUI {
+  display: none;
+  position: absolute;
+  right: 2%;
+  top: 8%;
+  margin-left:auto;
+  margin-right:auto;
+	width: 300px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #2C3E50;
+  background-color:#2C3E50;
+}
+#InfoUI div {
+	display: block;
+	margin: 5px;
+	width: 290px;
+	height: 40vh;
+}
+.colourOption{
+  	border-width: 0 0 0 0;
+}
+#showArea {
+	background-color: rgb(166, 170, 173);
+}
+#readArea {
+	background-color: rgb(70, 70, 70);
+}
+
+
+.selectedColour {
+	border-width: 0 0 0 0;
+}

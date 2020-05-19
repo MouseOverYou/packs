@@ -1,0 +1,153 @@
+/* Stylesheet Infobox */
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.clear{
+    clear: both;
+}
+
+.infobox{
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    right: -400px;
+    top: 60px;
+    background-color: #353A40;
+    background-image: url(../assets/dot_grid.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    opacity:1;
+    -webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.image-top{
+    width: 400px;
+    height: 140px;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 20px 0;
+    text-align: center;
+}
+
+
+.video-top{
+    width: 400px;
+    height: 180px;
+    background-color: #000;
+    overflow: hidden;
+    text-align: center;
+    pointer-events: auto;
+}
+
+.content-box{
+    width: 360px;
+    height: auto;
+    padding: 20px;
+}
+
+.bild-angepasst{
+    width: auto;
+    height: 100%;
+}
+
+#value-box{
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.values{
+    width: 80px;
+    height: auto;
+    float: left;
+    margin: auto;
+}
+
+.value-icon{
+    width: 45px;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+h1{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+}
+
+h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+}
+
+
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+
+
+
+#download-box{
+    width: 240px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.download-content{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: auto 20px;
+}
+
+
+
+
+
+
+#infobox-bild{
+    display: block;
+    pointer-events: none;
+}
+
+#infobox-video{
+    display: block;
+    pointer-events: none;
+}
+
+
+
+
