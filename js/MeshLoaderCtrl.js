@@ -68,7 +68,7 @@ function LoadAssets(scene, assetsManager) {
             j++
         });
         //move anims
-        task.loadedMeshes[0]._children[1].position.z = 1.5
+        task.loadedMeshes[0]._children[1].position.z = 1.75
         task.loadedMeshes[0]._children[1].scaling = new BABYLON.Vector3(1.5, 1.5, 1.5)
     }
 
@@ -81,10 +81,14 @@ function LoadAssets(scene, assetsManager) {
 
     var pbr
     assetsManager.onFinish = function (task) {
+        CreateParticlesHolder()
+        CreateParticleTextures()
+
         ChangeMaterialProperties()
         EditMeshes()
         CreateLighting()
         AnimateReveal()
+
         //anim stuff
         
 

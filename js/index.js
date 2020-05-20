@@ -45,7 +45,7 @@ var createScene = function () {
     sphereGlassMat.albedoColor = new BABYLON.Color3(0.85, 0.85, 0.85);
     sphereGlass.material = sphereGlassMat;
 
-    
+
     scene.clearColor = new BABYLON.Color3(1, 1, 1);
     scene.ambientColor = new BABYLON.Color3(1, 1, 1);
     BGDefault = scene.createDefaultEnvironment({
@@ -55,7 +55,7 @@ var createScene = function () {
     });
     BGDefault.skybox.setEnabled(false)
     BGDefault.rootMesh.position.y = -0.05
-    
+
 
     //var vrHelper = scene.createDefaultVRExperience({createDeviceOrientationCamera:false});
     //Handle Dragging MOuse
@@ -81,39 +81,48 @@ var createScene = function () {
     scene.onPointerDown = function () {
 
         var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (mesh.name.startsWith("PackCollider") && mesh.isPickable); });
-        if (pickInfo && pickInfo.pickedMesh) {
+        if (pickInfo && pickInfo.pickedMesh && !isAnimating) {
 
             //alert(pickInfo.pickedMesh.name);
             CurrentSelection = pickInfo.pickedMesh.name.split('PackCollider')[1];
+
+            //avoid same selection
+            if (PacksList[CurrentSelection].position.z == 2) {
+                return;
+            }
+            //shoot Particles
+            var pos = pickInfo.pickedMesh.getAbsolutePosition()
+            pos.y = 1.3
+            console.log(pos)
+            createWinParticles(CurrentSelection, pos)
+            
+            window.setTimeout(()=>{
+                selectParticles.stop();
+            }, 1500)
+
+            //Animate
             ChangeFocusPack(CurrentSelection)
             ShowSelectedAnim(CurrentSelection)
-            //ShowSelectedAnim(CurrentSelection)
             switch (CurrentSelection) {
                 case "0":
-                    //console.log(CurrentSelection)
                     break;
 
                 case "1":
-                    //ManageWorlds("turbine");
                     break;
 
                 case "2":
-                    showUI = !showUI
                     break;
 
                 case "3":
-                    showUI = !showUI
                     break;
 
                 case "4":
-                    //ManageWorlds("plane");
                     break;
 
                 case "5":
-                    showUI = !showUI
                     break;
-                case "5":
-                    showUI = !showUI
+
+                case "6":
                     break;
             }
 

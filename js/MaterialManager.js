@@ -1,18 +1,41 @@
 let woodMat, LeuchteMat
 let videoMats = []
 let coatMat;
-let daily_alphaSwoosh, coll_alphaSwoosh, hair_alphaSwoosh, omg1_alphaSwoosh, omg2_alphaSwoosh, red_alphaSwoosh 
+let daily_alphaSwoosh, coll_alphaSwoosh, hair_alphaSwoosh, omg1_alphaSwoosh, omg2_alphaSwoosh, red_alphaSwoosh
+
+let PartTexts = []
+function CreateParticleTextures(){
+    var hairParticles = new BABYLON.Texture("/assets/ParticleTextures/hair heart 3.png", scene)
+    PartTexts.push(hairParticles)
+    var collParticles = new BABYLON.Texture("/assets/ParticleTextures/coll spot.png", scene)
+    PartTexts.push(collParticles)
+    var omgParticles = new BABYLON.Texture("/assets/ParticleTextures/omg spot 1.png", scene)
+    PartTexts.push(omgParticles)
+    var dailyParticles = new BABYLON.Texture("/assets/ParticleTextures/daily spot.png", scene)
+    PartTexts.push(dailyParticles)
+    var flatterParticles = new BABYLON.Texture("/assets/ParticleTextures/flatter blume gruen 3.png", scene)
+    PartTexts.push(flatterParticles)
+    var redParticles = new BABYLON.Texture("/assets/ParticleTextures/red spot.png", scene)
+    PartTexts.push(redParticles)
+    var glowParticles = new BABYLON.Texture("/assets/ParticleTextures/glow heart 2.png", scene)
+    PartTexts.push(glowParticles)
+
+}
+
 function ChangeMaterialProperties() {
 
     var white = new BABYLON.Color3.FromHexString("#FFFFFF");
     var black = new BABYLON.Color3.FromHexString("#000000");
 
-    daily_alphaSwoosh = CreateVideoTexture("daily_alphaSwoosh",  "assets/videoTextures/daily swoosh bw.mp4")
-    coll_alphaSwoosh = CreateVideoTexture("coll_alphaSwoosh",  "assets/videoTextures/collagen bw.mp4")
     hair_alphaSwoosh = CreateVideoTexture("hair_alphaSwoosh",  "assets/videoTextures/hair bw.mp4")
-    omg1_alphaSwoosh = CreateVideoTexture("omg1_alphaSwoosh",  "assets/videoTextures/omg pflanze 1 bw.mp4")
-    omg2_alphaSwoosh = CreateVideoTexture("omg2_alphaSwoosh",  "assets/videoTextures/omg pflanze 2 bw.mp4")
+    coll_alphaSwoosh = CreateVideoTexture("coll_alphaSwoosh",  "assets/videoTextures/collagen bw.mp4")
+    omg_alphaSwoosh = CreateVideoTexture("omg_alphaSwoosh",  "assets/videoTextures/omg pflanze bw.mp4")
+    daily_alphaSwoosh = CreateVideoTexture("daily_alphaSwoosh",  "assets/videoTextures/daily swoosh bw.mp4")
+    flatter_alphaAuge = CreateVideoTexture("flatter_alphaAuge",  "assets/videoTextures/auge bw.mp4")
     red_alphaSwoosh = CreateVideoTexture("red_alphaSwoosh",  "assets/videoTextures/red swoosh bw.mp4")
+    glow_alphaSuns = CreateVideoTexture("glow_alphaSuns",  "assets/videoTextures/glow bw.mp4")
+    glow_colorSuns = CreateVideoTexture("glow_colorSuns",  "assets/videoTextures/glow color.mp4")
+    glow_colorSuns.getAlphaFromRGB =false
 
     let sceneMats = scene.materials;
     for (let mat of sceneMats) {
@@ -20,30 +43,36 @@ function ChangeMaterialProperties() {
             continue;
         }
         mat.reflectionTexture = hdrTextureCity;
-        if(mat.name == "d_swoosh"){
+        if(mat.name == "h_swoosh"){
             mat.unlit = true
-            mat.opacityTexture =daily_alphaSwoosh
-        }
-        else if(mat.name == "h_swoosh"){
-            mat.unlit = true
-            mat.opacityTexture =hair_alphaSwoosh
-        }
-        else if(mat.name == "r_swoosh"){
-            mat.unlit = true
-            mat.opacityTexture = red_alphaSwoosh
-        }
-        else if(mat.name == "o_swoosh1"){
-            mat.unlit = true
-            mat.opacityTexture = omg1_alphaSwoosh
-        }
-        else if(mat.name == "o_swoosh2"){
-            mat.unlit = true
-            mat.opacityTexture = omg2_alphaSwoosh
+            mat.opacityTexture = hair_alphaSwoosh
         }
         else if(mat.name == "c_swoosh"){
             mat.unlit = true
             mat.opacityTexture = coll_alphaSwoosh
         }
+        else if(mat.name == "o_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture = omg_alphaSwoosh
+        }
+        else if(mat.name == "d_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture = daily_alphaSwoosh
+        }
+        else if(mat.name == "f_auge"){
+            mat.unlit = true
+            mat.opacityTexture = flatter_alphaAuge
+        }
+        else if(mat.name == "r_swoosh"){
+            mat.unlit = true
+            mat.opacityTexture = red_alphaSwoosh
+        }
+        else if(mat.name == "g_sun_vid"){
+            mat.unlit = true
+            mat.opacityTexture = glow_alphaSuns
+            mat.albedoTexture = glow_colorSuns
+        }
+
 
         else if(mat.name.startsWith('_',1)){
             mat.unlit = true
