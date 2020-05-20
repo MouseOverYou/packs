@@ -5,19 +5,19 @@ let daily_alphaSwoosh, coll_alphaSwoosh, hair_alphaSwoosh, omg1_alphaSwoosh, omg
 
 let PartTexts = []
 function CreateParticleTextures(){
-    var hairParticles = new BABYLON.Texture("/assets/ParticleTextures/hair heart 3.png", scene)
+    var hairParticles = new BABYLON.Texture("assets/ParticleTextures/hair heart 3.png", scene)
     PartTexts.push(hairParticles)
-    var collParticles = new BABYLON.Texture("/assets/ParticleTextures/coll spot.png", scene)
+    var collParticles = new BABYLON.Texture("assets/ParticleTextures/coll spot.png", scene)
     PartTexts.push(collParticles)
-    var omgParticles = new BABYLON.Texture("/assets/ParticleTextures/omg spot 1.png", scene)
+    var omgParticles = new BABYLON.Texture("assets/ParticleTextures/omg spot 1.png", scene)
     PartTexts.push(omgParticles)
-    var dailyParticles = new BABYLON.Texture("/assets/ParticleTextures/daily spot.png", scene)
+    var dailyParticles = new BABYLON.Texture("assets/ParticleTextures/daily spot.png", scene)
     PartTexts.push(dailyParticles)
-    var flatterParticles = new BABYLON.Texture("/assets/ParticleTextures/flatter blume gruen 3.png", scene)
+    var flatterParticles = new BABYLON.Texture("assets/ParticleTextures/flatter blume gruen 3.png", scene)
     PartTexts.push(flatterParticles)
-    var redParticles = new BABYLON.Texture("/assets/ParticleTextures/red spot.png", scene)
+    var redParticles = new BABYLON.Texture("assets/ParticleTextures/red spot.png", scene)
     PartTexts.push(redParticles)
-    var glowParticles = new BABYLON.Texture("/assets/ParticleTextures/glow heart 2.png", scene)
+    var glowParticles = new BABYLON.Texture("assets/ParticleTextures/glow heart 2.png", scene)
     PartTexts.push(glowParticles)
 
 }
