@@ -31,10 +31,10 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     this._loadingDiv.id = "customLoadingScreenDiv";
     
     //this._loadingDiv.innerHTML = "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Loadingsome.gif/600px-Loadingsome.gif' />";
-    this._loadingDiv.innerHTML = "<img src='./assets/bayLoading.gif' />";
+    this._loadingDiv.innerHTML = "<img src='./assets/HUM_loading.gif' />";
 
     var para = document.createElement("p");
-    var node = document.createTextNode("Scene is being loaded ...");
+    var node = document.createTextNode("Hum lädt ...");
     para.appendChild(node);
 
     this._loadingDiv.appendChild(para)
