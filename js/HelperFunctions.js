@@ -34,7 +34,7 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     this._loadingDiv.innerHTML = "<img src='./assets/HUM_loading.gif' />";
 
     var para = document.createElement("p");
-    var node = document.createTextNode("Hum lädt ...");
+    var node = document.createTextNode("Loading ...");
     para.appendChild(node);
 
     this._loadingDiv.appendChild(para)
