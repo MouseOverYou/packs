@@ -79,7 +79,7 @@ function ResetRangePos() {
 //Change Focus PAck
 
 var lastPack
-var ChangeTime = 1.75
+var ChangeTime = 2
 var isAnimating = false
 
 function ChangeFocusPack(i) {
@@ -123,6 +123,16 @@ function ShowSelectedAnim(i) {
             AnimsList[k].setEnabled(false)
         }
     }
+    //go to Beginn of Video before start playing
+    AnimsList[i].getChildTransformNodes(true).forEach(elem => {
+        //play video on texture
+        if (elem.name.startsWith("Vid")) {
+            elem.getChildMeshes(true)[0].material.opacityTexture.video.currentTime = 0;
+            if (elem.getChildMeshes(true)[0].name == "gp0") {
+                elem.getChildMeshes(true)[0].material.albedoTexture.video.currentTime = 0;
+            }
+        }
+    })
 
     window.setTimeout(()=>{
         var c = 0
@@ -150,7 +160,7 @@ function ShowSelectedAnim(i) {
     
             //play backwards
             window.setTimeout(() => {
-                grafikAnim.to(elem.scaling, { x: 0, y: 0, z: 0, ease: "back.inOut(4)", duration: 1 }, "<0.1")
+                grafikAnim.to(elem.scaling, { x: 0, y: 0, z: 0, ease: "back.inOut(4)", duration: 1.25 }, "<0.1")
             }, 3000)
     
             c++
@@ -177,11 +187,11 @@ var emitterSelection, selectParticles
 function CreateParticlesHolder(){
     emitterSelection = BABYLON.Mesh.CreateBox("emitterSelection", 0.1, scene);
     emitterSelection.isVisible = false
-    emitterSelection.position.y = 1.3
+    emitterSelection.position.y = 1.4
     
 }
 function createWinParticles(selec, pos) {
-    emitterSelection.position.x = pos.x
+    emitterSelection.position.x = pos.x-0.8
     emitterSelection.position.z = pos.z
 
     selectParticles = new BABYLON.ParticleSystem("rain", 10, scene);

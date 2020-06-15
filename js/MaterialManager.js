@@ -27,6 +27,8 @@ function ChangeMaterialProperties() {
     var white = new BABYLON.Color3.FromHexString("#FFFFFF");
     var black = new BABYLON.Color3.FromHexString("#000000");
 
+    var omgMipMap = new BABYLON.Texture("./assets/HUM_OMG_German_rgb.jpg", scene, false, false)
+
     hair_alphaSwoosh = CreateVideoTexture("hair_alphaSwoosh",  "assets/videoTextures/hair bw.mp4")
     coll_alphaSwoosh = CreateVideoTexture("coll_alphaSwoosh",  "assets/videoTextures/collagen bw.mp4")
     omg_alphaSwoosh = CreateVideoTexture("omg_alphaSwoosh",  "assets/videoTextures/omg pflanze bw.mp4")
@@ -72,6 +74,14 @@ function ChangeMaterialProperties() {
             mat.opacityTexture = glow_alphaSuns
             mat.albedoTexture = glow_colorSuns
         }
+        else if(mat.name == "inside glow"){
+            mat.roughness = 0.5
+            mat.bumpTexture.level = 0.75
+        }
+        else if(mat.name == "inside hair"){
+            mat.roughness = 0.5
+            mat.bumpTexture.level = 0.75
+        }
 
 
         else if(mat.name.startsWith('_',1)){
@@ -105,6 +115,10 @@ function ChangeMaterialProperties() {
             mat.metallic = 0;
             mat.metallicF0Factor = 0.1
             mat.roughness = 0.1
+
+        }
+        else if(mat.name == "omg Label"){
+            mat.albedoTexture = omgMipMap
 
         }
 

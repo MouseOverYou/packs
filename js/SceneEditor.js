@@ -1,11 +1,11 @@
 var lightLinks, lightRechts, spotLightL, spotLightR, godrays
 function CreateLighting() {
-    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-90, -90, 90), scene);
+    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-1, -0.25, -1), scene);
     lightLinks.position = new BABYLON.Vector3(0, 2, -1);
-    lightLinks.intensity = 1
+    lightLinks.intensity = 2
     //lightLinks.shadowMinZ = -13
 
-    lightRechts = new BABYLON.DirectionalLight("lightRechts", new BABYLON.Vector3(-90, -90, -90), scene);
+    lightRechts = new BABYLON.DirectionalLight("lightRechts", new BABYLON.Vector3(-1, -0.25, 1), scene);
     lightRechts.position = new BABYLON.Vector3(0, 2, 1);
     lightRechts.intensity = 1
 
